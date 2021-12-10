@@ -1,112 +1,24 @@
-const database = {
-  toppings: [
-    {
-      id: 1,
-      name: "black olives",
-      price: 1.25,
-      type: "veggie"
-    },
-    {
-      id: 2,
-      name: "pepperoni",
-      price: 2.25,
-      type: "meat"
-    },
-    {
-      id: 3,
-      name: "banana peppers",
-      price: 1.25,
-      type: "veggie"
-    },
-    {
-      id: 4,
-      name: "pineapple",
-      price: 1.25,
-      type: "disgusting"
-    },
-    {
-      id: 5,
-      name: "bell peppers",
-      price: 1.25,
-      type: "veggie"
-    },
-    {
-      id: 6,
-      name: "bacon",
-      price: 2.25,
-      type: "meat"
-    }
-  ],
-  crusts: [
-    {
-      id: 1,
-      type: "deep dish",
-      price: 2
-    },
-    {
-      id: 2,
-      type: "NY style",
-      price: 1
-    },
-    {
-      id: 3,
-      type: "traditional hand tossed",
-      price: 0
-    }
-  ],
-  sizes: [
-    {
-      id: 1,
-      circumference: 12,
-      price: 7
-    },
-    {
-      id: 2,
-      circumference: 14,
-      price: 10
-    },
-    {
-      id: 3,
-      circumference: 16,
-      price: 12
-    }
-  ],
-  orderToppings: [
-    {
-      id: 1,
-      toppingId: 2,
-      orderId: 1
-    },
-    {
-      id: 2,
-      toppingId: 5,
-      orderId: 1
-    },
-    {
-      id: 3,
-      toppingId: 2,
-      orderId: 2
-    }
-  ],
-  orders: [
-    {
-      id: 1,
-      crustId: 1,
-      sizeId: 3,
-      timestamp: 1638976763958
-    },
-    {
-      id: 2,
-      crustId: 2,
-      sizeId: 1,
-      timestamp: 1638976763958
-    }
-  ]
+const applicationState = {
+  toppings: []
+}
+
+// This is reaching out over the internet for data
+// We have no control over how long this will take
+// You have to wait for a request/response to complete
+// fetch returns, INSTANTLY, an object -- a Promise
+// A Promise guarantees that we will EVENTUALLY get a response ( the data or an error )
+// .then acts like an event listener. It will call a function for us when the data is ready
+export const fetchToppings= () => {
+  return fetch('http://localhost:8088/toppings')
+  .then( (toppingsData) => toppingsData.json() ) //turn our toppings json data into a js array
+  .then( (toppings) => { 
+    console.log(toppings)
+    applicationState.toppings = toppings 
+  })
 }
 
 export const getToppings = () => {
-  // return [...database.toppings] // a bald-faced lie. 
-  return database.toppings.map( (topping) => ({...topping}) )
+  return applicationState.toppings.map( (topping) => ({...topping}) )
 }
 
 export const getCrusts = () => {
