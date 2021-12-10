@@ -1,6 +1,5 @@
 import { getToppings, setOrderTopping } from "./data.js";
 
-const toppings = getToppings()
 
 document.addEventListener("change", (event) => {
   if (event.target.name === "topping") {
@@ -10,6 +9,7 @@ document.addEventListener("change", (event) => {
 })
 
 export const Topping = () => {
+  const toppings = getToppings()
   const toppingsHTML = toppings.map( (topping) => {
     return `
       <li class="choice-list-item topping--list-item">

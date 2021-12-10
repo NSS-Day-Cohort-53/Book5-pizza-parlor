@@ -1,9 +1,13 @@
 import { PizzaParlor } from "./PizzaParlor.js"
+import { fetchToppings } from "./data.js"
 
 const render = () => document.querySelector("#content").innerHTML = PizzaParlor()
 
-// intially display the app data as HTML ( on page load )
-render()
+fetchToppings()
+.then( () => {
+  render() 
+})
+
 
 // rerender our app data as HTML when a new order is created
 document.addEventListener("dbStateChanged", () => render())
