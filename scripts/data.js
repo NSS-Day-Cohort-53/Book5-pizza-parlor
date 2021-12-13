@@ -1,5 +1,6 @@
 const applicationState = {
-  toppings: []
+  toppings: [],
+  crusts: []
 }
 
 // This is reaching out over the internet for data
@@ -17,12 +18,21 @@ export const fetchToppings= () => {
   })
 }
 
+export const fetchCrusts= () => {
+  return fetch('http://localhost:8088/crusts')
+  .then( (crustsData) => crustsData.json() ) //turn our crusts json data into a js array
+  .then( (crusts) => { 
+    console.log(crusts)
+    applicationState.crusts = crusts 
+  })
+}
+
 export const getToppings = () => {
   return applicationState.toppings.map( (topping) => ({...topping}) )
 }
 
 export const getCrusts = () => {
-  return database.crusts.map( (crust) => ({...crust}) )
+  return applicationState.crusts.map( (crust) => ({...crust}) )
 }
 
 export const getSizes = () => {

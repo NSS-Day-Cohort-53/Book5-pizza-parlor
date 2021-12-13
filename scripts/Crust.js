@@ -1,6 +1,5 @@
 import { getCrusts, setOrderCrust } from "./data.js";
 
-const crusts = getCrusts()
 
 document.addEventListener("change", (event) => {
   if (event.target.name === "crust") {
@@ -10,6 +9,7 @@ document.addEventListener("change", (event) => {
 })
 
 export const Crust = () => {
+  const crusts = getCrusts()
   const crustsHTML = crusts.map( (crust) => {
     return `
       <li class="choice-list-item crust--list-item">

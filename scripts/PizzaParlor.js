@@ -1,5 +1,5 @@
 import { Topping } from "./Topping.js";
-// import { Crust } from "./Crust.js";
+import { Crust } from "./Crust.js";
 // import { Size } from "./Size.js";
 import { OrderButton } from "./OrderButton.js";
 // import { Order } from "./Order.js"
@@ -16,6 +16,7 @@ export const PizzaParlor = () => `
     <article class="menu__ingredient crusts">
       <h2>Crusts</h2>
       <ul>
+      ${Crust()}
       </ul>
     </article>
     <article class="menu__ingredient sizes">

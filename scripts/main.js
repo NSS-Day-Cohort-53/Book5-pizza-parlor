@@ -1,9 +1,10 @@
 import { PizzaParlor } from "./PizzaParlor.js"
-import { fetchToppings } from "./data.js"
+import { fetchToppings, fetchCrusts } from "./data.js"
 
 const render = () => document.querySelector("#content").innerHTML = PizzaParlor()
 
 fetchToppings()
+.then( () => fetchCrusts() )
 .then( () => {
   render() 
 })
