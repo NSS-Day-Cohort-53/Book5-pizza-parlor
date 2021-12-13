@@ -6,11 +6,11 @@ import {
   getOrderToppings 
 } from "./data.js";
 
-const toppings = getToppings()
-const crusts = getCrusts()
-const sizes = getSizes()
 
 export const Order = () => {
+  const toppings = getToppings()
+  const crusts = getCrusts()
+  const sizes = getSizes()
   const orders = getOrders()
   const orderToppings = getOrderToppings()
 

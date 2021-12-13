@@ -1,10 +1,13 @@
 import { PizzaParlor } from "./PizzaParlor.js"
-import { fetchToppings, fetchCrusts } from "./data.js"
+import { fetchToppings, fetchCrusts, fetchSizes, fetchOrders, fetchOrderToppings } from "./data.js"
 
 const render = () => document.querySelector("#content").innerHTML = PizzaParlor()
 
 fetchToppings()
 .then( () => fetchCrusts() )
+.then( () => fetchSizes() )
+.then( () => fetchOrders() )
+.then( () => fetchOrderToppings() )
 .then( () => {
   render() 
 })

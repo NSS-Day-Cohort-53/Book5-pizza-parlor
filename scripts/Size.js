@@ -1,7 +1,5 @@
 import { getSizes, setOrderSize } from "./data.js";
 
-const sizes = getSizes()
-
 document.addEventListener("change", (event) => {
   if (event.target.name === "size") {
     const [,sizeId] = event.target.value.split("--")
@@ -10,6 +8,7 @@ document.addEventListener("change", (event) => {
 })
 
 export const Size = () => {
+  const sizes = getSizes()
   const sizesHTML = sizes.map( (size) => {
     return `
       <li class="choice-list-item size--list-item">
