@@ -1,5 +1,9 @@
 const applicationState = {
-  toppings: []
+  toppings: [],
+  crusts: [],
+  sizes: [],
+  orders: [],
+  orderToppings: []
 }
 
 // This is reaching out over the internet for data
@@ -17,23 +21,59 @@ export const fetchToppings= () => {
   })
 }
 
+export const fetchCrusts = () => {
+  return fetch('http://localhost:8088/crusts')
+  .then( (crustsData) => crustsData.json() ) //turn our crusts json data into a js array
+  .then( (crusts) => { 
+    console.log(crusts)
+    applicationState.crusts = crusts 
+  })
+}
+
+export const fetchSizes = () => {
+  return fetch('http://localhost:8088/sizes')
+  .then( (sizesData) => sizesData.json() ) //turn our sizes json data into a js array
+  .then( (sizes) => { 
+    console.log(sizes)
+    applicationState.sizes = sizes 
+  })
+}
+
+export const fetchOrders = () => {
+  return fetch('http://localhost:8088/orders')
+  .then( (ordersData) => ordersData.json() ) //turn our orders json data into a js array
+  .then( (orders) => { 
+    console.log(orders)
+    applicationState.orders = orders 
+  })
+}
+
+export const fetchOrderToppings = () => {
+  return fetch('http://localhost:8088/orderToppings')
+  .then( (otData) => otData.json() ) //turn our ot json data into a js array
+  .then( (ot) => { 
+    console.log(ot)
+    applicationState.orderToppings = ot 
+  })
+}
+
 export const getToppings = () => {
   return applicationState.toppings.map( (topping) => ({...topping}) )
 }
 
 export const getCrusts = () => {
-  return database.crusts.map( (crust) => ({...crust}) )
+  return applicationState.crusts.map( (crust) => ({...crust}) )
 }
 
 export const getSizes = () => {
-  return database.sizes.map( (size) => ({...size}) )
+  return applicationState.sizes.map( (size) => ({...size}) )
 }
 
 export const getOrders = () => {
-  return database.orders.map( (order) => ({...order}) )
+  return applicationState.orders.map( (order) => ({...order}) )
 }
 export const getOrderToppings = () => {
-  return database.orderToppings.map( (orderTopping) => ({...orderTopping}) )
+  return applicationState.orderToppings.map( (orderTopping) => ({...orderTopping}) )
 }
 
 
