@@ -1,22 +1,27 @@
-import { PizzaParlor } from "./PizzaParlor.js"
-import { fetchToppings, fetchCrusts, fetchSizes, fetchOrders, fetchOrderToppings } from "./data.js"
+import { PizzaParlor } from "./PizzaParlor.js";
+import {
+	fetchToppings,
+	fetchCrusts,
+	fetchSizes,
+	fetchOrders,
+	fetchOrderToppings,
+} from "./data.js";
 
-const render = () => document.querySelector("#content").innerHTML = PizzaParlor()
-
-fetchToppings()
-.then( () => fetchCrusts() )
-.then( () => fetchSizes() )
-.then( () => fetchOrders() )
-.then( () => fetchOrderToppings() )
-.then( () => {
-  render() 
-})
-
-
+const render = () => {
+	fetchToppings()
+		.then(() => fetchCrusts())
+		.then(() => fetchSizes())
+		.then(() => fetchOrders())
+		.then(() => fetchOrderToppings())
+		.then(() => {
+			document.querySelector("#content").innerHTML = PizzaParlor();
+		});
+};
+render()
 // rerender our app data as HTML when a new order is created
-document.addEventListener("dbStateChanged", () => render())
+document.addEventListener("dbStateChanged", () => render());
 
-// TODO: Make the DOM refresh ( rerender the HTML ) when a new order is created 
+// TODO: Make the DOM refresh ( rerender the HTML ) when a new order is created
 // Why? Our DOM represents the db state on page load, BUT when the db state changes, by adding a new order to our orders collection, our application state and our db state are no longer in sync with each other. Our DOM representation of our data is no longer accurate
 
 // Questions:
