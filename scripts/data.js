@@ -164,6 +164,15 @@ const calcId = (arr) => {
 	return newId;
 };
 
+export const deleteOrder = (id) => {
+		return fetch(`http://localhost:8088/orders/${id}`, {
+				method: "DELETE"
+})
+		.then(() => {
+			// alert anything that's listening to the fact that our db has been updated
+			document.dispatchEvent(new CustomEvent("dbStateChanged"))})
+}
+
 //TODO:
 // Allow users to select multiple toppings for an order
 // FIRST THING TO DO! -- Update the ERD
