@@ -109,34 +109,9 @@
       "id": 6
     },
     {
-      "toppingId": 1,
-      "orderId": 9,
-      "id": 7
-    },
-    {
-      "toppingId": 2,
-      "orderId": 9,
-      "id": 8
-    },
-    {
       "toppingId": 3,
       "orderId": 9,
-      "id": 9
-    },
-    {
-      "toppingId": 4,
-      "orderId": 9,
-      "id": 10
-    },
-    {
-      "toppingId": 5,
-      "orderId": 9,
-      "id": 11
-    },
-    {
-      "toppingId": 6,
-      "orderId": 9,
-      "id": 12
+      "id": 7
     }
   ],
   "orders": [
@@ -189,9 +164,9 @@
       "id": 8
     },
     {
-      "sizeId": 1,
+      "sizeId": 3,
       "crustId": 2,
-      "timestamp": 1639502766891,
+      "timestamp": 1639584312916,
       "id": 9
     }
   ]

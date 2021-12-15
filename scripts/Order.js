@@ -3,8 +3,15 @@ import {
   getToppings, 
   getCrusts, 
   getSizes, 
-  getOrderToppings 
+  getOrderToppings,
+  deleteOrder
 } from "./data.js";
+
+document.addEventListener("click", (event) => {
+  if (event.target.name === "deleteOrder") {
+      deleteOrder(parseInt(event.target.id))
+  }
+})
 
 
 export const Order = () => {
@@ -45,6 +52,7 @@ export const Order = () => {
       for (const topping of foundToppings) {
         orderPrice += topping.price
       }
+
       
       return `
         <li order--list-item">
@@ -56,6 +64,7 @@ export const Order = () => {
           Total Price: $${orderPrice.toFixed(2)}
           </p> 
         </li>
+        <button name="deleteOrder" id='${order.id}'>Delete Order</button>
         `
     })
   
